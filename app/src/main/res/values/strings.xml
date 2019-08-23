@@ -2,14 +2,17 @@
     <string name="app_name">HiveMind</string>
     <string name="beeHiveStatusString">Bee Hive Status</string>
     <string name="batteryLevelString">Battery Level:</string>
-    <string name="temperatureString">Temperature:</string>
+    <string name="temperatureString">Temperature</string>
     <string name="currentTemperatureString">Current Temperature:</string>
     <string name="idealTemperatureString">Ideal Temperature:</string>
-    <string name="humidityString">Humidity:</string>
+    <string name="humidityString">Humidity</string>
     <string name="currentHumidityString">Current Humidity:</string>
     <string name="idealHumidityString">Ideal Humidity:</string>
-    <string name="soundString">Sound:</string>
-    <string name="videoStreamString">Video Stream:</string>
-    <string name="playAudioString">Play live audio from hive</string>
-    <string name="muteAudioString">Mute live audio from hive</string>
+    <string name="soundString">Sound</string>
+    <string name="videoStreamString">Video Stream</string>
+    <string name="playAudioString">Play live audio from your hive</string>
+    <string name="muteAudioString">Mute live audio from your hive</string>
+    <string name="videoButtonString">Watch live feed of your hive</string>
+    <string name="tempDetailsButtonString">Temperature Details</string>
+    <string name="humidityDetailsButtonString">Humidity Details</string>
 </resources>
