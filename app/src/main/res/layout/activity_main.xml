@@ -41,7 +41,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/midDivider" />
 
     <TextView
         android:id="@+id/currentTemperatureText"
@@ -71,13 +71,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="49dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:text="@string/temperatureString"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="153dp" />
+        app:layout_constraintTop_toBottomOf="@+id/batteryLevelText" />
 
     <TextView
         android:id="@+id/beeHiveStatusText"
@@ -118,7 +119,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toBottomOf="@+id/bottomDivider" />
 
     <ToggleButton
         android:id="@+id/soundButton"
@@ -142,16 +143,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:text="@string/videoStreamString"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="585dp" />
+        app:layout_constraintTop_toBottomOf="@+id/soundButton" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/videoButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -165,7 +167,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/midDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
@@ -176,7 +178,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <View
-        android:id="@+id/divider2"
+        android:id="@+id/bottomDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
@@ -185,8 +187,8 @@
         tools:layout_editor_absoluteX="6dp" />
 
     <Button
-        android:id="@+id/humidityDetailsButton"
-        android:layout_width="128"
+        android:id="@+id/temperatureDetailsButton"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
@@ -195,23 +197,23 @@
         app:layout_constraintTop_toTopOf="@+id/currentTemperatureText" />
 
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/topDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:background="?android:attr/listDivider"
+        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/temperatureText"
         app:layout_constraintTop_toBottomOf="@+id/batteryLevelText"
         tools:layout_editor_absoluteX="2dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/humidityDetailsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/humidityDetailsButtonString"
-        app:layout_constraintEnd_toEndOf="@+id/humidityDetailsButton"
-        app:layout_constraintStart_toStartOf="@+id/humidityDetailsButton"
+        app:layout_constraintEnd_toEndOf="@+id/temperatureDetailsButton"
+        app:layout_constraintStart_toStartOf="@+id/temperatureDetailsButton"
         app:layout_constraintTop_toTopOf="@+id/currentHumidityText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
