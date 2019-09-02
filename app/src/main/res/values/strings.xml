@@ -12,4 +12,5 @@
     <string name="muteAudioString">Mute live audio from your hive</string>
     <string name="videoButtonString">Watch live feed of your hive</string>
     <string name="historyButtonString"> History</string>
+    <string name="backHome">Back</string>
 </resources>
