@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HiveMind</string>
     <string name="beeHiveStatusString">Bee Hive Status</string>
-    <string name="batteryLevelString">Battery Level:</string>
+    <string name="batteryLevelString">Battery:</string>
     <string name="temperatureString">Temperature</string>
     <string name="currentString">Current:</string>
     <string name="idealString">Ideal:</string>
@@ -11,6 +11,25 @@
     <string name="playAudioString">Play live audio from your hive</string>
     <string name="muteAudioString">Mute live audio from your hive</string>
     <string name="videoButtonString">Watch live feed of your hive</string>
-    <string name="historyButtonString"> History</string>
+    <string name="historyButtonString">History</string>
     <string name="backHome">Back</string>
+    <string name="currentReadingsString">Current Readings</string>
+    <string name="viewHistoryString">View History</string>
+    <string name="inHiveString">In Hive</string>
+    <string name="ambientString">Ambient</string>
+    <string name="tempColonString">Temp:</string>
+    <string name="humidColonString">Humid:</string>
+    <string name="soundColonString">Sound:</string>
+    <string name="recentAveragesString">Recent Averages</string>
+    <string name="audioStreamString">Audio Stream</string>
+    <string name="liveInTheHiveString">Live in the Hive</string>
+    <string-array name="spinner_array">
+        <item>Select a Data Set</item>
+        <item>Temperature</item>
+        <item>Humidity</item>
+        <item>Sound</item>
+    </string-array>
+    <string name="oneString">1</string>
+    <string name="twoString">2</string>
+    <string name="threeString">3</string>
 </resources>
