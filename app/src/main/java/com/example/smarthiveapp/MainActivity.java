@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //LineGraphSeries<DataPoint> series;
     PointsGraphSeries<DataPoint> pointSeries;
-    double x;
+    double x = 1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -39,25 +39,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         optionsSpinner.setAdapter(adapter);
 
 
-        x = 0;
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-        PointsGraphSeries<DataPoint> pointSeries = new PointsGraphSeries<>(new DataPoint[] {
-                new DataPoint(1, 2),
-                new DataPoint(2, 4),
-                new DataPoint(3, 6),
-                new DataPoint(4, 4)
-        });
-        graph.addSeries(pointSeries);
-        pointSeries.setShape(PointsGraphSeries.Shape.TRIANGLE);
-        // set manual X bounds
-        graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(5);
 
-        // set manual Y bounds
-        graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(10);
        /* series = new LineGraphSeries<DataPoint>();
         for(int i = 0; i < 750; i++){
             x = x + 0.1;
@@ -70,7 +52,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        PointsGraphSeries<DataPoint> pointSeries = new PointsGraphSeries<>(new DataPoint[] {
+                new DataPoint(1, 1)
+        });
+        graph.addSeries(pointSeries);
+        pointSeries.setShape(PointsGraphSeries.Shape.TRIANGLE);
 
+        if(pos != 0){
+            pointSeries.appendData(new DataPoint(x+=1,x),true, 4);
+        }
+        // set manual X bounds
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(10);
+
+        // set manual Y bounds
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(0);
+        graph.getViewport().setMaxY(10);
 
     }
 
