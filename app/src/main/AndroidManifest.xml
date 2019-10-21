@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayHumidityHistory"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".AltActivity3"
+        <activity android:name=".VideoActivity"
             android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

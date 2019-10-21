@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
+import android.widget.Button;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -19,7 +20,7 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+    private Button videoButton;
     PointsGraphSeries<DataPoint> tempSeries;
     PointsGraphSeries<DataPoint> humSeries;
     PointsGraphSeries<DataPoint> soundSeries;
@@ -29,6 +30,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        videoButton = (Button) findViewById(R.id.videoStreamButton);
+        videoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                openDisplayVideo();
+            }
+        });
 
 
         Spinner optionsSpinner = (Spinner) findViewById(R.id.options_spinner);
@@ -91,6 +99,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    public void openDisplayVideo() {
+        Intent intent = new Intent(this, VideoActivity.class);
+        startActivity(intent);
     }
 
 }
