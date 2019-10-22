@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button videoButton;
+    private Button audioButton;
     PointsGraphSeries<DataPoint> tempSeries;
     PointsGraphSeries<DataPoint> humSeries;
     PointsGraphSeries<DataPoint> soundSeries;
@@ -35,6 +37,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v){
                 openDisplayVideo();
+            }
+        });
+        audioButton = (Button) findViewById(R.id.audioStreamButton);
+        final MediaPlayer audioPlayer = MediaPlayer.create(this, R.raw.bumblebee);
+        audioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (audioPlayer.isPlaying()) {
+                    audioPlayer.pause();
+                }
+                else {
+                    audioPlayer.start();
+                }
             }
         });
 
@@ -65,17 +80,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         PointsGraphSeries<DataPoint> tempSeries = new PointsGraphSeries<DataPoint>();
         PointsGraphSeries<DataPoint> humSeries = new PointsGraphSeries<DataPoint>();
         PointsGraphSeries<DataPoint> soundSeries = new PointsGraphSeries<DataPoint>();
-        if(pos == 0) {
-            for (int i = 0; i < 40; i++) {
-                x = x + 0.5;
-                y = Math.sin(x / 5) + 1;
-                tempSeries.appendData(new DataPoint(x, y), true, 40);
-                y = Math.sqrt(x);
-                humSeries.appendData(new DataPoint(x, y), true, 40);
-                y = Math.cos(x / 5 + 1);
-                soundSeries.appendData(new DataPoint(x, y), true, 40);
-            }
+
+        for (int i = 0; i < 40; i++) {
+            x = x + 0.5;
+            y = Math.sin(x / 5) + 1;
+            tempSeries.appendData(new DataPoint(x, y), true, 40);
+            y = Math.sqrt(x);
+            humSeries.appendData(new DataPoint(x, y), true, 40);
+            y = Math.cos(x / 5 + 1);
+            soundSeries.appendData(new DataPoint(x, y), true, 40);
         }
+
 
         tempSeries.setShape(PointsGraphSeries.Shape.TRIANGLE);
         humSeries.setShape(PointsGraphSeries.Shape.RECTANGLE);
