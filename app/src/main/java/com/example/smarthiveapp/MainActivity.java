@@ -63,15 +63,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         optionsSpinner.setAdapter(adapter);
 
 
-
-       /* series = new LineGraphSeries<DataPoint>();
-        for(int i = 0; i < 750; i++){
-            x = x + 0.1;
-            y = Math.sin(x / 5) + 1;
-            series.appendData(new DataPoint(x,y), true, 750);
-        }
-        graph.addSeries(series);
-        */
     }
 
     @Override
@@ -81,20 +72,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         PointsGraphSeries<DataPoint> humSeries = new PointsGraphSeries<DataPoint>();
         PointsGraphSeries<DataPoint> soundSeries = new PointsGraphSeries<DataPoint>();
 
-        for (int i = 0; i < 40; i++) {
-            x = x + 0.5;
-            y = Math.sin(x / 5) + 1;
-            tempSeries.appendData(new DataPoint(x, y), true, 40);
-            y = Math.sqrt(x);
-            humSeries.appendData(new DataPoint(x, y), true, 40);
-            y = Math.cos(x / 5 + 1);
-            soundSeries.appendData(new DataPoint(x, y), true, 40);
-        }
-
-
-        tempSeries.setShape(PointsGraphSeries.Shape.TRIANGLE);
-        humSeries.setShape(PointsGraphSeries.Shape.RECTANGLE);
-        soundSeries.setShape(PointsGraphSeries.Shape.POINT);
+        tempSeries.resetData(generateTempData());
+        humSeries.resetData(generateHumData());
+        soundSeries.resetData(generateSoundData());
 
         if(pos == 1){
             graph.removeAllSeries();
@@ -119,6 +99,41 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void openDisplayVideo() {
         Intent intent = new Intent(this, VideoActivity.class);
         startActivity(intent);
+    }
+
+    private DataPoint[] generateTempData() {
+        int count = 40;
+        DataPoint[] values = new DataPoint[count];
+        for (int i = 0; i < count; i++) {
+            double x = i;
+            double y = (0.5) * Math.sin(x) + 1;
+            DataPoint v = new DataPoint(x, y);
+            values[i] = v;
+        }
+        return values;
+    }
+    private DataPoint[] generateHumData() {
+        int count = 40;
+        DataPoint[] values = new DataPoint[count];
+        for (int i = 0; i < count; i++) {
+            double x = i;
+            double y = Math.sqrt(x);
+            DataPoint v = new DataPoint(x, y);
+            values[i] = v;
+        }
+        return values;
+    }
+
+    private DataPoint[] generateSoundData() {
+        int count = 40;
+        DataPoint[] values = new DataPoint[count];
+        for (int i = 0; i < count; i++) {
+            double x = i;
+            double y = 2;
+            DataPoint v = new DataPoint(x, y);
+            values[i] = v;
+        }
+        return values;
     }
 
 }
