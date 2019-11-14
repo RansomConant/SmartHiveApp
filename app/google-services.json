@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "512749035701",
+    "firebase_url": "https://smarthoneybeehive.firebaseio.com",
+    "project_id": "smarthoneybeehive",
+    "storage_bucket": "smarthoneybeehive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512749035701:android:1fbdc094047cefe2d29efc",
+        "android_client_info": {
+          "package_name": "com.example.smarthiveapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512749035701-1jermlbm1bimoke2i0btj268u8f8tjrs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtKMO3QnMhhquEcUVPW9BSsVZXxZpGmOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512749035701-1jermlbm1bimoke2i0btj268u8f8tjrs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
