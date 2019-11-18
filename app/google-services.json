@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "512749035701-d3h5epqn8t6ohsghjrnb7jcvij0d5ksk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smarthiveapp",
+            "certificate_hash": "502f324179e4bae9cdbeb76d347c4e4696b7ffba"
+          }
+        },
+        {
           "client_id": "512749035701-1jermlbm1bimoke2i0btj268u8f8tjrs.apps.googleusercontent.com",
           "client_type": 3
         }

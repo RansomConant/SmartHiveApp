@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     PointsGraphSeries<DataPoint> tempSeries;
     PointsGraphSeries<DataPoint> humSeries;
     PointsGraphSeries<DataPoint> soundSeries;
+    //private DatabaseReference mDatabase;
     double x = 1, y;
 
     @Override
