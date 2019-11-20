@@ -1,14 +1,32 @@
 package com.example.smarthiveapp;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
+
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnPausedListener;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageException;
+import com.google.firebase.storage.StorageMetadata;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +37,9 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.io.IOException;
+import java.net.URI;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button videoButton;
@@ -28,9 +49,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     PointsGraphSeries<DataPoint> soundSeries;
     //private DatabaseReference mDatabase;
     double x = 1, y;
+    Uri soundUri;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         videoButton = (Button) findViewById(R.id.videoStreamButton);
@@ -40,20 +65,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 openDisplayVideo();
             }
         });
-        audioButton = (Button) findViewById(R.id.audioStreamButton);
-        final MediaPlayer audioPlayer = MediaPlayer.create(this, R.raw.bumblebee);
-        audioButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (audioPlayer.isPlaying()) {
-                    audioPlayer.pause();
-                }
-                else {
-                    audioPlayer.start();
-                }
-            }
-        });
-
 
         Spinner optionsSpinner = (Spinner) findViewById(R.id.options_spinner);
         optionsSpinner.setOnItemSelectedListener(this);
@@ -137,4 +148,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return values;
     }
 
+    public void audio_control(View v){
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageRef = storage.getReference();
+
+        final MediaPlayer audioPlayer = new MediaPlayer();
+
+
+        storageRef.child("soundtest.mp3").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                try {
+                    audioPlayer.setDataSource(uri.toString());
+                    audioPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.start();
+                        }
+                    });
+                    audioPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }
