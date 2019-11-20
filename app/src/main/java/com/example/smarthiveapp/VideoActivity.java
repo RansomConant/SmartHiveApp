@@ -16,6 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.IOException;
+
 public class VideoActivity extends AppCompatActivity {
 
     VideoView simpleVideoView;
@@ -35,8 +41,21 @@ public class VideoActivity extends AppCompatActivity {
         }
         // set the media controller for video view
         simpleVideoView.setMediaController(mediaControls);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageRef = storage.getReference();
+
+
+
+        storageRef.child("beevideo.mp4").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                simpleVideoView.setVideoURI(uri);
+            }
+        });
         // set the uri for the video view
-        simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.beevideo));
+        //simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.beevideo));
         // start a video
         simpleVideoView.start();
 

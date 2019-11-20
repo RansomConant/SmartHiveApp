@@ -66,6 +66,38 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        StorageReference storageRef = storage.getReference();
+
+        final MediaPlayer audioPlayer = new MediaPlayer();
+
+
+        storageRef.child("preamble10.wav").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                try {
+                    audioPlayer.setDataSource(uri.toString());
+                    audioPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        audioButton = (Button) findViewById(R.id.audioStreamButton);
+        audioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (audioPlayer.isPlaying()){
+                    audioPlayer.pause();
+                }
+                else {
+                    audioPlayer.start();
+                }
+            }
+        });
+
         Spinner optionsSpinner = (Spinner) findViewById(R.id.options_spinner);
         optionsSpinner.setOnItemSelectedListener(this);
 
@@ -141,37 +173,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         DataPoint[] values = new DataPoint[count];
         for (int i = 0; i < count; i++) {
             double x = i;
-            double y = 2;
+            double y = 2 * x;
             DataPoint v = new DataPoint(x, y);
             values[i] = v;
         }
         return values;
     }
 
-    public void audio_control(View v){
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-
-        StorageReference storageRef = storage.getReference();
-
-        final MediaPlayer audioPlayer = new MediaPlayer();
-
-
-        storageRef.child("soundtest.mp3").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                try {
-                    audioPlayer.setDataSource(uri.toString());
-                    audioPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mediaPlayer) {
-                            mediaPlayer.start();
-                        }
-                    });
-                    audioPlayer.prepare();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 }
