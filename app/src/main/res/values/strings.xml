@@ -26,7 +26,6 @@
     <string-array name="spinner_array">
         <item>Select a Data Set</item>
         <item>Temperature</item>
-        <item>Humidity</item>
         <item>Sound</item>
     </string-array>
     <string name="oneString">1</string>

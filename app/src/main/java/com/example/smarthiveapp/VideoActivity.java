@@ -48,7 +48,7 @@ public class VideoActivity extends AppCompatActivity {
 
 
 
-        storageRef.child("beevideo.mp4").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.child("all.mp4").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 simpleVideoView.setVideoURI(uri);
