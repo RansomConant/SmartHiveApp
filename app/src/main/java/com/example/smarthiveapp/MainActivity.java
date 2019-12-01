@@ -133,14 +133,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
         GraphView graph = (GraphView) findViewById(R.id.graph);
-        PointsGraphSeries<DataPoint> tempSeries = new PointsGraphSeries<>();
-        PointsGraphSeries<DataPoint> soundSeries = new PointsGraphSeries<DataPoint>();
+        PointsGraphSeries<DataPoint> tempSeries = new PointsGraphSeries<>(generateTempData());
+        PointsGraphSeries<DataPoint> soundSeries = new PointsGraphSeries<DataPoint>(generateSoundData());
 
 
 
         // enable scaling and scrolling
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
+
 
         if(pos == 1){
 
