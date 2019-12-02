@@ -54,8 +54,7 @@ public class VideoActivity extends AppCompatActivity {
                 simpleVideoView.setVideoURI(uri);
             }
         });
-        // set the uri for the video view
-        //simpleVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.beevideo));
+
         // start a video
         simpleVideoView.start();
 
